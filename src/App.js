@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import DataList from './DataList';
+import Header from './components/Header';
+import Herocard from './components/Herocard';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ViewData from './ViewData';
+import Error from './error';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Header />
+        <Herocard />
+        {/* <DataList /> */}
+        <Routes>
+            <Route path="/" element={<DataList />} />
+            <Route path='/view' element={<ViewData />} />
+            <Route path='*' element={<Error />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
